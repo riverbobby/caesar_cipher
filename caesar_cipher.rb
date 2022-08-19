@@ -27,18 +27,23 @@ def caesar_cypher(string, shift_factor)
 	return array_encoded.join("")
 end
 
-puts "Enter a phrase to encrypt"
-string_to_encrypt = gets.chomp
-puts "Enter a integer to use for encription\npositive shifts up\nnegative shifts down"
-number = Integer(gets) rescue false
+again = 'y'
 
-while number == false
-	puts "Enter a VALID integer"
+puts "Welcome to Caesar Cypher\na program that encodes simple phrases by shifting the alphabet!\n\n"
+
+while again == 'y'
+	puts "Please enter a phrase to encrypt:"
+	string_to_encrypt = gets.chomp
+	puts "Please enter an integer to use for encription\na positive number shifts up\na negative number shifts down"
 	number = Integer(gets) rescue false
+
+	while number == false
+		puts "Enter a VALID integer"
+		number = Integer(gets) rescue false
+	end
+
+	encrypted_string = caesar_cypher(string_to_encrypt, number)
+	puts "Your encripted phrase is:\n#{encrypted_string}\n\n"
+	puts "enter y to encript another phrase or anything else to quit:"
+	again = gets.chomp
 end
-
-encrypted_string = caesar_cypher(string_to_encrypt, number)
-puts "Your encripted phrase is:\n#{encrypted_string}"
-
-
-#binding.pry
